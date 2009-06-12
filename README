@@ -1,0 +1,10 @@
+This is my fork for kaos orginal on http://repo.or.cz/w/kaos.git
+
+At the moment ONLY use haskell ghc ver.6.8.3 ( 6.10.1 has some changes  TODO)
+
+Works with Win, Linux ,(Mac??)
+ 
+Works with openc2e and c2e,lc2e
+
+See: http://creatures.wikia.com/wiki/KAOS_How_To
+Precompiled bin for Win and Linux : http://www.creaturetopia.org/viewtopic.php?f=10&t=117
