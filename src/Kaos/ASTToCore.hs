@@ -123,8 +123,8 @@ astToCore' (SScriptHead ex) = do
     mapM_ (`typeIs` typeNum) sx
     emit $ CoreLine ([TokenLiteral "SCRP"] ++ (zipWith TokenConstSlot sx ranges))
     where
-        ranges = [r8, r8, r8, r16]
-        r8 = checkRange (0,255)
+        ranges = [r16, r16, r16, r16]
+        
         r16 = checkRange (0,65535)
         checkRange r@(lo, hi) (CInteger v)
             | v >= lo && v <= hi
@@ -189,8 +189,8 @@ evalCond = fmap condToCore . everywhereM (mkM eval)
         eval x = return x
 
 condToCore :: BoolExpr Slot -> [CoreToken]
-condToCore (BAnd e1 e2) = (condToCore e1) ++ [TokenLiteral "&&"] ++ cmpToCore e2
-condToCore (BOr  e1 e2) = (condToCore e1) ++ [TokenLiteral "||"] ++ cmpToCore e2
+condToCore (BAnd e1 e2) = (condToCore e1) ++ [TokenLiteral "and"] ++ cmpToCore e2
+condToCore (BOr  e1 e2) = (condToCore e1) ++ [TokenLiteral "or"] ++ cmpToCore e2
 condToCore e = cmpToCore e
 
 cmpToCore :: BoolExpr Slot -> [CoreToken]

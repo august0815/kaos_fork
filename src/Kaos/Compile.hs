@@ -146,7 +146,7 @@ compileUnit (AgentScript blkHead code) = do
         [CAOSLine [CAOSLiteral _, CAOSConst _, CAOSConst _, CAOSConst _, CAOSConst _]] -> return ()
         _ -> compileError $ "Side-effects not allowed in script classifier"
     buf <- compileCode code >>= finishCompile
-    emitScript $ prelude ++ buf ++ "ENDM\n\n"
+    emitScript $ prelude ++ buf ++ "endm\n\n"
 compileUnit OVDecl{ ovName = name, ovIndex = Just idx, ovType = t, ovErrCtx = ectx }
     | idx < 0 || idx > 99
     = fail $ "Object variable index " ++ show idx ++ " is out of range"
@@ -200,7 +200,7 @@ finalEmit st = do
     removeS  <- liftM BS.pack (finishCompile $ csRemoveBuffer st)
     return (BS.concat $ [installS] ++ (toList (csScriptBuffer st)) ++ [rscr, removeS])
     where
-        rscr = BS.pack "RSCR\n"
+        rscr = BS.pack "rscr\n"
 
 compile :: [String] -> KaosSource -> IO (Maybe BS.ByteString)
 compile flags code = do

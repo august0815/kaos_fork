@@ -15,8 +15,9 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -}
-module Kaos.Emit (emitCaos, emitConst) where
 
+module Kaos.Emit (emitCaos, emitConst) where
+import Text.Printf
 import Kaos.CAOS
 import Kaos.AST
 import Data.Char
@@ -30,7 +31,7 @@ emitLine (CAOSLine l) = unwords $ map emitToken l
 emitLine (CAOSLoop l) = unlines $ map emitLine l
 
 emitToken :: CAOSToken CAOSRegister -> String
-emitToken (CAOSLiteral s) = map toUpper s
+emitToken (CAOSLiteral s) = map toLower s
 emitToken r@(CAOSRegister (CAOSReg i)) =
     case show i of
         s@[_] -> "VA0" ++ s
@@ -40,5 +41,6 @@ emitToken (CAOSConst cv) = emitConst cv
 
 emitConst :: ConstValue -> String
 emitConst (CInteger i) = show i
-emitConst (CString s) = s
-emitConst (CFloat f) = show f
+emitConst (CString s) = if (s)!!1=='['  then  tail (init(s)) else s
+emitConst (CFloat f) =  printf "%01f\n" f
+
