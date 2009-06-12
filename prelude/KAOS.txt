@@ -1,0 +1,58 @@
+File: KAOS
+    ___________________________________________________________________________
+
+    Version 0.1
+
+    Copyright (C) 2007-2008 Bryan Donlan
+
+    http://code.google.com/p/creatureskaos/
+
+
+    About: License
+
+        
+		*    GNU GENERAL PUBLIC LICENSE
+		*       Version 3, 29 June 2007
+		*       see GPL-3.txt
+        * Kaos is copyright (C) 2005-2008  Bryan Donlan <bdonlan@gmail.com>, all rights reserved.
+        *  see COPYING.txt
+
+    Topic: Overview
+    ATTENTION this is ALPHA. USING on your own RISK
+    
+    Works with lc2e , openc2e on linux.
+    
+    
+    This libs need to be installed on linux:
+    
+    * ~/kaos/dist/build/kaos$ ldd kaos
+	* linux-gate.so.1 =>  (0xb7fb7000)
+	* libutil.so.1 => /lib/tls/i686/cmov/libutil.so.1 (0xb7f92000)
+	* libdl.so.2 => /lib/tls/i686/cmov/libdl.so.2 (0xb7f8e000)
+	* libm.so.6 => /lib/tls/i686/cmov/libm.so.6 (0xb7f68000)
+	* libgmp.so.3 => /usr/lib/libgmp.so.3 (0xb7f24000)
+	* librt.so.1 => /lib/tls/i686/cmov/librt.so.1 (0xb7f1b000)
+	* libc.so.6 => /lib/tls/i686/cmov/libc.so.6 (0xb7dcc000)
+	* /lib/ld-linux.so.2 (0xb7fb8000)
+	* libpthread.so.0 => /lib/tls/i686/cmov/libpthread.so.0 (0xb7db40
+	
+Copy kaos and mach.sh in your /usr/bin/  folder.Then use *mach.sh foo.k* to compile kaos into *.cos
+	
+	
+TODO:	
+This is still TO DO
+ * *psoudo include* is in shell , move it to haskell (c-like include ??)
+ 
+ * *There is still much work  with library to get full support fo CAOS-commands*
+
+ * More useful error reporting (ongoing)
+ * More prelude definitions
+ * (preview release?)
+ * Compound types - user defined?
+ *  parts
+ * (alpha release?)
+ * eventually(?):
+ * Allow macros to define inlinable rvalues (impure/idempotent)
+How to use kaos:
+
+

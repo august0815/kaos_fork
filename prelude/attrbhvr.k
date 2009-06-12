@@ -1,4 +1,5 @@
-// ATTR
+/* About: Copyright (C) 2005-2008  Bryan Donlan
+*/ 
 define numeric A_CARRYABLE = 1;
 define numeric A_MOUSEABLE = 2;
 define numeric A_ACTIVATEABLE = 4;
@@ -13,7 +14,9 @@ define numeric A_ROTATABLE = 1024;
 define numeric A_PRESENCE = 2048;
 
 define numeric A_PHYSICS = A_SUFFERCOLLISIONS | A_SUFFERPHYSICS;
-
+/**
+ATTR returnig
+ */
 // need better folder :(
 define attributes(agent a) returning numeric {
         _caos {
@@ -22,7 +25,9 @@ define attributes(agent a) returning numeric {
                 };
         };
 }
-
+/**
+ ATTR
+ */
 define set attributes(numeric attr, agent a) {
         _caos {
                 .targ < $a {
@@ -31,14 +36,15 @@ define set attributes(numeric attr, agent a) {
         };
 }
 
-// BHVR
 define numeric B_ACTIVATE1 = 1;
 define numeric B_ACTIVATE2 = 2;
 define numeric B_DEACTIVATE = 4;
 define numeric B_HIT = 8;
 define numeric B_EAT = 16;
 define numeric B_PICKUP = 32;
-
+/**
+BHVR returning
+ */
 define behaviour(agent a) returning numeric {
         _caos {
                 .targ < $a {
@@ -46,7 +52,9 @@ define behaviour(agent a) returning numeric {
                 };
         };
 }
-
+/**
+BHVR
+ */
 define set behaviour(numeric attr, agent a) {
         _caos {
                 .targ < $a {

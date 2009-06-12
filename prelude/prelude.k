@@ -1,6 +1,7 @@
-/*  Kaos - A compiler for creatures scripts
+/* ABOUT: Kaos - A compiler for creatures scripts
  *  Copyright (C) 2005-2008  Bryan Donlan
- *
+ */
+/*
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -34,11 +35,18 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-
+ 
+/**
+ SQRT
+ */
+  
 define sqrt(numeric v) returning numeric {
 	_caos { .inline let $return = SQRT $v(r); }
 }
-
+/*
+ * Function: iterator
+ * Please comment 
+ */
 define iterator(agent) enum(numeric family, numeric genus, numeric species) {
   agent targ;
   _caos {
@@ -52,10 +60,15 @@ define iterator(agent) enum(numeric family, numeric genus, numeric species) {
     NEXT;
   };
 }
-define unid(agent a) returning numeric {
+/**
+ UNID
+ */
+ define unid(agent a) returning numeric {
   _caos { .targ < $a { .inline let $return = UNID; }; };
 }
-
+/**
+ Please comment 'loop'
+ */
 define iterator() reps(numeric n) {
   _caos {
     REPS $n(r);
@@ -63,15 +76,22 @@ define iterator() reps(numeric n) {
     REPE;
   };
 }
-
+/**
+NORN Returning
+ */
 define norn() returning agent {
   _caos { .inline let $return = NORN; };
 }
-
+/**
+NORN
+ */
 define set norn(agent norn) {
   _caos { NORN $norn(r); }
 }
-
+/*
+ * Function: newsimple
+ * NEW: SIMP
+ */
 define newsimple(numeric family, numeric genus, numeric species, string spritefile, numeric firstframe, numeric noframes, numeric plane) returning agent {
         _caos {
                 .targ > $return {
@@ -79,7 +99,10 @@ define newsimple(numeric family, numeric genus, numeric species, string spritefi
                 };
         }
 }
-
+/*
+ * Function: move
+ * MVTO x y
+ */
 define move(agent a, numeric x, numeric y) {
         _caos {
                 .targ < $a {
@@ -87,7 +110,9 @@ define move(agent a, numeric x, numeric y) {
                 };
         };
 }
-
+/**
+DCOR
+ */
 define set dcor(numeric display, agent a) {
         _caos {
                 .targ < $a {
@@ -95,7 +120,9 @@ define set dcor(numeric display, agent a) {
                 };
         };
 }
-
+/**
+ PERM
+ */
 define set perm(numeric value, agent a) {
         _caos {
                 .targ < $a {
@@ -103,34 +130,48 @@ define set perm(numeric value, agent a) {
                 };
         };
 }
-
+/**
+KILL
+ */
 define kill(agent a) {
 	_caos {
 		KILL $a(r);
 		.targ zap;
 	};
 }
-
+/**
+ WNDL
+ */
 define windowleft() returning numeric {
 	_caos { .inline let $return = WNDL; };
 }
-
+/**
+ WNDR
+ */
 define windowright() returning numeric {
 	_caos { .inline let $return = WNDR; };
 }
-
-define pointer() returning agent {
+/**
+ PNTR
+ */
+ define pointer() returning agent {
 	_caos { .static let $return = PNTR; };
 }
-
+/**
+ NULL
+ */
 define null() returning agent {
 	_caos { .static let $return = NULL; };
 }
-
+/**
+STOP
+ */
 define stop() {
 	_caos { STOP; };
 }
-
+/**
+PLNE
+ */
 define plane(agent a) returning numeric {
 	_caos {
 		.targ < $a {
@@ -138,7 +179,9 @@ define plane(agent a) returning numeric {
 		};
 	}
 }
-
+/**
+POSL
+ */
 define x(agent a) returning numeric {
 	_caos {
 		.targ < $a {
@@ -146,7 +189,9 @@ define x(agent a) returning numeric {
 		};
 	}
 }
-
+/**
+POST
+ */
 define y(agent a) returning numeric {
 	_caos {
 		.targ < $a {
@@ -154,7 +199,9 @@ define y(agent a) returning numeric {
 		};
 	}
 }
-
+/**
+POSX
+ */
 define centrex(agent a) returning numeric {
 	_caos {
 		.targ < $a {
@@ -162,7 +209,9 @@ define centrex(agent a) returning numeric {
 		};
 	}
 }
-
+/**
+NEW: COMP
+ */
 define newcompound(numeric family, numeric genus, numeric species, string spritefile, numeric firstframe, numeric noframes, numeric plane) returning agent {
 	_caos {
 		.targ > $return {
@@ -170,7 +219,9 @@ define newcompound(numeric family, numeric genus, numeric species, string sprite
 		};
 	}
 }
-
+/**
+ TICK
+ */
 define set tick(numeric ticktime, agent a) {
 	_caos {
 		.targ < $a {
@@ -178,7 +229,9 @@ define set tick(numeric ticktime, agent a) {
 		};
 	}
 }
-
+/**
+ POSE
+ */
 define set pose(numeric pose, agent a) {
 	_caos {
 		.targ < $a {
@@ -186,7 +239,9 @@ define set pose(numeric pose, agent a) {
 		};
 	}
 }
-
+/**
+ PAT: KILL
+ */
 define killpart(agent a, numeric partno) {
 	_caos {
 		.targ < $a {
@@ -194,14 +249,18 @@ define killpart(agent a, numeric partno) {
 		};
 	}
 }
-
+/**
+PART
+ */
 // TODO: ugh
 define changepart(agent a, numeric partno) {
 	_caos {
 		PART $partno(r);
 	}
 }
-
+/**
+PAT: FIXD
+ */
 define newtextpart(agent a, numeric partno, string spritefile, numeric firstframe, numeric x, numeric y, numeric plane, string fontspritefile) {
 	_caos {
 		.targ < $a {
@@ -209,7 +268,9 @@ define newtextpart(agent a, numeric partno, string spritefile, numeric firstfram
 		};
 	}
 }
-
+/**
+FRMT
+ */
 // TODO: better params
 define textformat(agent a, numeric leftmargin, numeric topmargin, numeric rightmargin, numeric bottommargin, numeric linespacing, numeric charspacing, numeric justification) {
 	_caos {
@@ -218,7 +279,9 @@ define textformat(agent a, numeric leftmargin, numeric topmargin, numeric rightm
 		};
 	}
 }
-
+/**
+ PTXT
+ */
 define set parttext(string text, agent a) {
 	_caos {
 		.targ < $a {
@@ -226,7 +289,9 @@ define set parttext(string text, agent a) {
 		};
 	}
 }
-
+/**
+NPGS
+ */
 define nopages(agent a) returning numeric {
 	_caos {
 		.targ < $a {
@@ -234,7 +299,9 @@ define nopages(agent a) returning numeric {
 		};
 	}
 }
-
+/**
+ MVTO
+ */
 define moveto(agent a, numeric x, numeric y) {
 	_caos {
 		.targ < $a {
@@ -242,7 +309,9 @@ define moveto(agent a, numeric x, numeric y) {
 		};
 	}
 }
-
+/**
+FREL
+ */
 define floatto(agent a, agent target) {
 	_caos {
 		.targ < $a {
@@ -250,13 +319,17 @@ define floatto(agent a, agent target) {
 		};
 	}
 }
-
+/**
+OWNR
+ */
 define owner() returning agent {
 	_caos {
 		.static let $return = OWNR;
 	};
 }
-
+/**
+IMSK
+ */
 define set inputmask(numeric mask, agent a) {
 	_caos {
 		.targ < $a {
@@ -264,7 +337,9 @@ define set inputmask(numeric mask, agent a) {
 		};
 	}
 }
-
+/**
+ PLNE
+ */
 define set plane(numeric val, agent a) {
 	_caos {
 		.targ < $a {
@@ -272,7 +347,9 @@ define set plane(numeric val, agent a) {
 		};
 	}
 }
-
+/**
+ PTXT returning
+  */
 define parttext(agent a) returning string {
 	_caos {
 		.targ < $a {
@@ -280,7 +357,9 @@ define parttext(agent a) returning string {
 		};
 	}
 }
-
+/**
+FLTO
+ */
 define floatat(agent a, numeric x, numeric y) {
 	_caos {
 		.targ < $a {
@@ -288,7 +367,9 @@ define floatat(agent a, numeric x, numeric y) {
 		};
 	}
 }
-
+/**
+PAT: TXT
+ */
 define newtextinputpart(agent a, numeric partno, string spritefile, numeric firstframe, numeric x, numeric y, numeric plane, numeric msgno, string fontspritefile) {
 	_caos {
 		.targ < $a {
@@ -296,7 +377,9 @@ define newtextinputpart(agent a, numeric partno, string spritefile, numeric firs
 		};
 	}
 }
-
+/**
+FCUS
+ */
 define setfocus(agent a) {
 	_caos {
 		.targ < $a {
@@ -304,7 +387,9 @@ define setfocus(agent a) {
 		};
 	}
 }
-
+/**
+RTAR
+ */
 define randomagent(numeric family, numeric genus, numeric species) returning agent {
 	_caos {
 		.targ > $return {
@@ -312,7 +397,9 @@ define randomagent(numeric family, numeric genus, numeric species) returning age
 		};
 	}
 }
-
+/**
+ORDR SHOU
+ */
 define shoutorder(agent a, string order) {
 	_caos {
 		.targ < $a {

@@ -1,11 +1,11 @@
 Name:           Kaos
-Version:        0.01
+version:    0.1
 License:        GPL
-License-File:   COPYING
+License-File:   COPYING.txt
 Author:         Bryan Donlan
-Build-Depends:  base, mtl, haskell98, parsec, bytestring, containers, array
+Build-Depends:  base<4, mtl, haskell98, parsec, bytestring, containers , array
 Synopsis:       Kaos Compiler
-
+build-type: Custom
 Executable:     kaos
 Main-Is:        Main.hs
 Hs-Source-Dirs: src, gen
